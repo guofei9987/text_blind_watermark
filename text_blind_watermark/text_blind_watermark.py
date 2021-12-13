@@ -54,7 +54,7 @@ def extract(sentence_embed, password):
 
     last_zero = len(bin_wm_extract) - bin_wm_extract[::-1].find("1")
 
-    last_zero=(last_zero//128+1)*128
+    last_zero = ((last_zero - 1) // 128 + 1) * 128
     bin_wm_extract = bin_wm_extract[:last_zero]
 
     # 解密

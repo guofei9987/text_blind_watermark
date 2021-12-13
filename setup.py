@@ -19,7 +19,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='text_blind_watermark',  # 包的名字，也是将来用户使用 pip install scikit-opt 来安装
-    version='0.0.1',  # 版本号，每次上传的版本号应当不一样，可以用类似 sko.__version__ 去自动指定
+    version='0.0.2',  # 版本号，每次上传的版本号应当不一样，可以用类似 sko.__version__ 去自动指定
     python_requires='>=3.5',
     description='Text Blind Watermark in Python',
     long_description=read_file('README.md'),
