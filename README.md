@@ -1,2 +1,2 @@
 # blind_watermark_text
-put blind watermark into a text
+Put blind watermark into a text
