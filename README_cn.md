@@ -1,20 +1,21 @@
 # text_blind_watermark
-Put blind watermark into a text.
 
-Can be used in 
-- [x] Wechat
-- [x] dingding
-- [x] ...
+文本隐水印
 
-## How to Use
+经测试，可以用于
+- [x] 微信
+- [x] 钉钉
+- [x] 欢迎补充
 
-install
+## 如何使用
+
+安装
 
 ```bash
 >pip install text_blind_watermark
 ```
 
-### Alice Put her text watermark into a text:
+### 张三：把隐秘消息嵌入到另一段文本中
 
 ```python
 from text_blind_watermark import embed, extract
@@ -28,12 +29,11 @@ print("打上盲水印之后")
 print(sentence_embed)
 ```
 
-Then, you can paste this text to where you need.
-
+显示的明文可以粘贴到任何地方
 
 *It uses AES to encrypt*
 
-### Bob Extract the invisible watermark
+### 罗老师：拿到明文，解出暗文
 
 ```python
 from text_blind_watermark import embed, extract
