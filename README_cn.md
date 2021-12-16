@@ -7,6 +7,10 @@
 - [x] 钉钉
 - [x] 欢迎补充
 
+
+在线演示: [https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html](https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html)
+
+
 ## 如何使用
 
 安装
