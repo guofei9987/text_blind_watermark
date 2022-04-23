@@ -1,65 +1,50 @@
-import crypto
-import sys
-
-sys.modules['Crypto'] = crypto
-
-from Crypto.Cipher import AES
+import random
 
 
 def embed(sentence, wm, password):
-    # 对水印做AES加密
-    wm = wm.encode('utf-8')
-    cryptor = AES.new(key='{:0<16}'.format(password).encode('utf-8'),
-                      mode=AES.MODE_ECB)  # key 长度必须是16,24,32 长度的 byte 格式
-    ciphertext_tmp = cryptor.encrypt(wm + b' ' * (16 - len(wm) % 16))  # 明文的长度必须是16的整数倍
-    ciphertext_hex = ciphertext_tmp.hex()  # 转为16进制
+    random.seed(password)
 
-    bin_text = bin(int(ciphertext_hex, base=16))[2:]
+    wm_bin = [format(i ^ random.randint(0, 255), '08b') for i in wm.encode('utf-8')]  # 8位2进制格式
+
+    # wm_bin = [format(i, '08b') for i in wm.encode('utf-8')]  # 8位2进制格式
+    # 头尾各放一个1。提取过程中把首尾的0去掉。
+    wm_bin = '1' + ''.join(wm_bin) + '1'
 
     # 打入水印
-    len_bin_text = len(bin_text)
+    len_bin_text = len(wm_bin)
     len_sentence = len(sentence)
     assert len_sentence > len_bin_text, "文本长度太短了,至少{}".format(len_bin_text)
 
+    # TODO:循环嵌入
+    # 嵌入水印
     sentence_embed = ""
     for idx in range(len_sentence):
         sentence_embed += sentence[idx]
         if idx < len_bin_text:
-            if bin_text[idx] == "1":
+            if wm_bin[idx] == "1":
                 sentence_embed += chr(127)
 
-    # print("打入水印后的结果：")
-    # print("水印长度{}".format(len(bin_text)))
-    # print(sentence_embed)
     return sentence_embed
 
 
-# %%提取水印
-
 def extract(sentence_embed, password):
-    bin_wm_extract = ""
-    previous_is_char = False
-    for i in sentence_embed:
-        if previous_is_char:
-            if ord(i) == 127:
-                bin_wm_extract += "1"
-                previous_is_char = False
-            else:
-                bin_wm_extract += "0"
-                previous_is_char = True
+    wm_extract_bin = ""
+
+    idx = 0
+    while idx < len(sentence_embed):
+        if sentence_embed[idx] != chr(127):
+            idx += 1
+            wm_extract_bin += '0'
         else:
-            previous_is_char = True
+            idx += 2
+            wm_extract_bin += '1'
 
-    #  去掉末尾的0
+    first_zero = wm_extract_bin.find("1")
+    last_zero = len(wm_extract_bin) - wm_extract_bin[::-1].find("1")
+    wm_extract_bin = wm_extract_bin[first_zero + 1:last_zero - 1]
 
-    last_zero = len(bin_wm_extract) - bin_wm_extract[::-1].find("1")
+    random.seed(password)
+    s_out = bytes([int(wm_extract_bin[8 * i:8 * i + 8], base=2) ^ random.randint(0, 255) for i in
+                   range(len(wm_extract_bin) // 8)]).decode('utf-8')
 
-    last_zero = ((last_zero - 1) // 128 + 1) * 128
-    bin_wm_extract = bin_wm_extract[:last_zero]
-
-    # 解密
-
-    hex_wm_extract = hex(int(bin_wm_extract, base=2))
-
-    return AES.new(key='{:0<16}'.format(password).encode('utf-8'), mode=AES.MODE_ECB) \
-        .decrypt(bytes.fromhex(hex_wm_extract[2:])).decode('utf-8')  # key 长度必须是16,24,32 长度的 byte 格式
+    return s_out

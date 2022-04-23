@@ -7,6 +7,8 @@ Put blind watermark into a text.
 Can be used in 
 - [x] Wechat
 - [x] dingding
+- [x] pages
+- [x] zhihu.com 
 - [x] ...
 
 ## How to Use
