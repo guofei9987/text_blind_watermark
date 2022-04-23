@@ -3,8 +3,8 @@
 Put blind watermark into a text.
 
 [![PyPI](https://img.shields.io/pypi/v/text_blind_watermark)](https://pypi.org/project/text_blind_watermark/)
-[![Build Status](https://travis-ci.com/guofei9987/text_blind_watermark.svg?branch=master)](https://travis-ci.com/guofei9987/text_blind_watermark)
-[![codecov](https://codecov.io/gh/guofei9987/text_blind_watermark/branch/master/graph/badge.svg)](https://codecov.io/gh/guofei9987/text_blind_watermark)
+[![Build Status](https://app.travis-ci.com/guofei9987/text_blind_watermark.svg?branch=main)](https://app.travis-ci.com/guofei9987/text_blind_watermark)
+[![codecov](https://codecov.io/gh/guofei9987/text_blind_watermark/branch/main/graph/badge.svg?token=85EAN4IVM6)](https://codecov.io/gh/guofei9987/text_blind_watermark)
 [![License](https://img.shields.io/pypi/l/text_blind_watermark.svg)](https://github.com/guofei9987/text_blind_watermark/blob/master/LICENSE)
 ![Python](https://img.shields.io/badge/python->=3.5-green.svg)
 ![Platform](https://img.shields.io/badge/platform-windows%20|%20linux%20|%20macos-green.svg)

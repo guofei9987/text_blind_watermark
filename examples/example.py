@@ -11,8 +11,7 @@ B站介绍视频：https://www.bilibili.com/video/BV1m3411s7kT
 欢迎对本项目提意见以及 Star： https://github.com/guofei9987/text_blind_watermark
 '''
 
-# %%
-# 打入盲水印
+# %% 打入盲水印
 twm = TextBlindWatermark(password=password)
 twm.read_wm(watermark=watermark)
 twm.read_text(text=text)
