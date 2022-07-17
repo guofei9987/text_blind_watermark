@@ -12,9 +12,7 @@ install:
 # command to run tests
 script:
   - cd examples
-  - coverage run -p example.py
-  - cp .coverage.* ..
-  - cd ..
+  - coverage run -p examples/example.py
 
 # Push the results back to codecov
 after_success:
