@@ -11,7 +11,6 @@ install:
 
 # command to run tests
 script:
-  - cd examples
   - coverage run -p examples/example.py
 
 # Push the results back to codecov
