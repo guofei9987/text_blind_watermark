@@ -34,7 +34,7 @@ install
 ### Alice Put her text watermark into a text:
 
 ```python
-from text_blind_watermark import embed, extract
+from text_blind_watermark import TextBlindWatermark
 
 wm = "绝密：两点老地方见！"
 sentence = "这句话中有盲水印，你能提取出来吗？" * 16
@@ -55,7 +55,7 @@ Then, you can paste this text to where you need.
 ### Bob Extract the invisible watermark
 
 ```python
-from text_blind_watermark import embed, extract
+from text_blind_watermark import TextBlindWatermark
 
 twm_new = TextBlindWatermark(password='20190808')
 wm_extract = twm_new.extract(text_embed)
