@@ -37,10 +37,11 @@ install
 ```python
 from text_blind_watermark import TextBlindWatermark
 
-wm = "绝密：两点老地方见！"
-sentence = "这句话中有盲水印，你能提取出来吗？" * 16
+watermark = "绝密：两点老地方见！"
+text = "这句话中有盲水印，你能提取出来吗？" * 16
+password = "20190808"
 
-twm = TextBlindWatermark(password='20190808')
+twm = TextBlindWatermark(password=password)
 twm.read_wm(watermark=watermark)
 twm.read_text(text=text)
 text_embed = twm.embed()
@@ -57,8 +58,9 @@ Then, you can paste this text to where you need.
 
 ```python
 from text_blind_watermark import TextBlindWatermark
+password = "20190808"
 
-twm_new = TextBlindWatermark(password='20190808')
+twm_new = TextBlindWatermark(password=password)
 wm_extract = twm_new.extract(text_embed)
 print("解出的盲水印：")
 print(wm_extract)
