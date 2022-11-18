@@ -59,3 +59,40 @@ class TextBlindWatermark:
         random.seed(self.password)
         return bytes([int(wm_extract_bin[8 * i:8 * i + 8], base=2) ^ random.randint(0, 255) for i in
                       range(len(wm_extract_bin) // 8)]).decode('utf-8')
+
+
+class TextBlindWatermarkThin:
+    def __init__(self, password):
+        self.bit2char_dict = {'0': chr(29), '1': chr(127)}
+        self.char2bit_dict = {chr(29): '0', chr(127): '1'}
+        self.password = password
+
+    def embed(self, watermark):
+        random.seed(self.password)
+        wm_bin = [format(i ^ random.randint(0, 255), '08b') for i in watermark.encode('utf-8')]  # 8位2进制格式
+        wm_bin = ''.join(wm_bin)
+        return ''.join(self.bit2char_dict[i] for i in wm_bin)
+
+    def extract(self, text_embed):
+
+        idx_start, idx_end = 0, 0
+        find_left, find_right = False, False
+        for idx, char in enumerate(text_embed):
+            if char in self.char2bit_dict:
+                if not find_left:
+                    idx_start, find_left = idx, True
+            else:
+                if find_left and not find_right:
+                    idx_end, find_right = idx, True
+
+            if find_left and find_right:
+                break
+        else:
+            idx_end = len(text_embed)
+
+        wm_extract_bin = ''.join(self.char2bit_dict[i] for i in text_embed[idx_start:idx_end])
+
+        random.seed(self.password)
+
+        return bytes([int(wm_extract_bin[8 * i:8 * i + 8], base=2) ^ random.randint(0, 255) for i in
+                      range(len(wm_extract_bin) // 8)]).decode('utf-8')
