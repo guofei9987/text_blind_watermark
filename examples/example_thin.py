@@ -1,5 +1,3 @@
-import random
-
 from text_blind_watermark import TextBlindWatermarkThin
 
 password = '20190808'
@@ -8,8 +6,8 @@ text_blind_wm = TextBlindWatermarkThin(password=password)
 
 wm = text_blind_wm.embed(watermark=watermark)
 # This is example，you can put wm everywhere
-text_embed = '上' + wm + '下文'
-print('打入盲水印后的文本:', text_embed)
+text_embed = '这句话中有盲' + wm + '水印，你能提取出来吗？'
+print(text_embed)
 
 # %%
 
