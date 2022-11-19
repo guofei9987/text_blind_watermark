@@ -25,3 +25,5 @@ wm_extract = twm_new.extract(text_embed)
 print("解出的盲水印：")
 print(wm_extract)
 
+# %%
+assert wm_extract == watermark

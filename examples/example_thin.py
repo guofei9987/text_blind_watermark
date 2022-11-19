@@ -14,3 +14,6 @@ print(text_embed)
 text_blind_wm_new = TextBlindWatermarkThin(password=password)
 wm_extract = text_blind_wm_new.extract(text_embed)
 print('提取内容：', wm_extract)
+
+# %%
+assert text_embed == wm_extract
