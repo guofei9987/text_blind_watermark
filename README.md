@@ -1,6 +1,6 @@
 # text_blind_watermark
 
-Put blind watermark into a text.
+Put message(blind watermark) into a text. so that the message is invisible, and the changes of the text are not perceptible.
 
 [![PyPI](https://img.shields.io/pypi/v/text_blind_watermark)](https://pypi.org/project/text_blind_watermark/)
 [![Build Status](https://app.travis-ci.com/guofei9987/text_blind_watermark.svg?branch=main)](https://app.travis-ci.com/guofei9987/text_blind_watermark)
@@ -15,6 +15,8 @@ Put blind watermark into a text.
 
 - Video demo：[https://www.bilibili.com/video/BV1m3411s7kT](https://www.bilibili.com/video/BV1m3411s7kT)
 - Online demo: [https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html](https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html)
+- **中文 readme** [README_cn.md](README_cn.md)
+- **Source code:** [https://github.com/guofei9987/text_blind_watermark](https://github.com/guofei9987/text_blind_watermark)
 
 
 Can be used in 
