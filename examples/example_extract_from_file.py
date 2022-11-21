@@ -9,3 +9,5 @@ twm_new = TextBlindWatermark(password=password)
 wm_extract = twm_new.extract(text_embed)
 print("解出的盲水印：")
 print(wm_extract)
+
+assert wm_extract == '绝密：两点老地方见！'

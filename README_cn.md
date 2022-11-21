@@ -2,12 +2,18 @@
 
 文本隐水印
 
-经测试，可以用于
-- [x] 微信
-- [x] 钉钉
+经测试，在这些场景下信息隐藏比较完美
+- [x] MacBook 版本的 Chrome 浏览器，包括知乎网页版、微博网页版等。
+- [x] 微信、钉钉。Mac/Iphone 版均可
 - [x] 知乎
 - [x] 苹果备忘录
+- [x] 用 Chrome 打开 github.com 上的代码文件和文本文件（但md文件不行）
+- [x] 用复制/黏贴 (ctrl+c/v) 的方式在上述平台之间黏贴
 - [x] 欢迎补充
+
+不太行的
+- Safari 浏览器
+
 
 
 在线演示: [https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html](https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html)
@@ -39,7 +45,6 @@ wm = text_blind_wm.embed(watermark=watermark)
 text_embed = '这句话中有盲' + wm + '水印，你能提取出来吗？'
 print(text_embed)
 ```
-
 
 
 ### 从文本中提取不可见的信息
