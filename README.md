@@ -46,6 +46,8 @@ text_embed = '这句话中有盲' + wm + '水印，你能提取出来吗？'
 print(text_embed)
 ```
 
+>这句话中有盲水印，你能提取出来吗？
+
 ### extract message from text
 
 ```python
@@ -54,6 +56,7 @@ wm_extract = text_blind_wm_new.extract(text_embed)
 print('提取内容：', wm_extract)
 ```
 
+>github.com/guofei9987
 
 ## Method 2 is more robust
 

@@ -28,7 +28,9 @@
 ```python
 from text_blind_watermark import TextBlindWatermarkThin
 
+# 密码
 password = '20190808'
+# 要嵌入的信息
 watermark = 'github.com/guofei9987'
 text_blind_wm = TextBlindWatermarkThin(password=password)
 
@@ -38,6 +40,9 @@ text_embed = '这句话中有盲' + wm + '水印，你能提取出来吗？'
 print(text_embed)
 ```
 
+>这句话中有盲水印，你能提取出来吗？
+
+
 ### 从文本中提取不可见的信息
 
 ```python
@@ -45,6 +50,8 @@ text_blind_wm_new = TextBlindWatermarkThin(password=password)
 wm_extract = text_blind_wm_new.extract(text_embed)
 print('提取内容：', wm_extract)
 ```
+
+>github.com/guofei9987
 
 ## 更稳定的版本
 ### 张三：把隐秘消息嵌入到另一段文本中
