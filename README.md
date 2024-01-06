@@ -36,30 +36,55 @@ install
 ### embed message into text:
 
 ```python
-from text_blind_watermark import TextBlindWatermarkThin
+from text_blind_watermark import TextBlindWatermark2
 
 password = '20190808'
+text = '这句话中有盲水印，你能提取出来吗？'
 watermark = 'github.com/guofei9987'
-text_blind_wm = TextBlindWatermarkThin(password=password)
 
-wm = text_blind_wm.embed(watermark=watermark)
-# This is example，you can put wm everywhere
-text_embed = '这句话中有盲' + wm + '水印，你能提取出来吗？'
-print(text_embed)
+text_blind_wm = TextBlindWatermark2(password=password)
+
+text_with_wm = text_blind_wm.embed(text=text, watermark=watermark)
+print(text_with_wm)
 ```
 
 
 ### extract message from text
 
 ```python
-text_blind_wm_new = TextBlindWatermarkThin(password=password)
-wm_extract = text_blind_wm_new.extract(text_embed)
+text_blind_wm2 = TextBlindWatermark2(password=password)
+wm_extract = text_blind_wm2.extract(text_with_wm)
 print('提取内容：', wm_extract)
 ```
 
 >github.com/guofei9987
 
-## Method 2 is more robust
+
+
+### `chr_type`
+
+You can choose different type to get better performance.
+
+
+```python
+from text_blind_watermark import TextBlindWatermark2
+
+password = '20190808'
+text = '这句话中有盲水印，你能提取出来吗？'
+watermark = 'github.com/guofei9987'
+
+text_blind_wm = TextBlindWatermark2(password=password, chr_type=(3, 4))
+
+text_with_wm = text_blind_wm.embed(text=text, watermark=watermark)
+print(text_with_wm)
+
+text_blind_wm2 = TextBlindWatermark2(password=password, chr_type=(3, 4))
+wm_extract = text_blind_wm2.extract(text_with_wm)
+print('提取内容：', wm_extract)
+assert watermark == wm_extract
+```
+
+## Another algorithm is more robust
 
 ### Alice Put her text watermark into a text:
 

@@ -29,8 +29,8 @@ setup(
     author='Guo Fei',
     author_email='guofei9987@foxmail.com',
     license='MIT',
-    packages=find_packages(),  # 也可以是一个列表，例如 ['sko']
+    packages=find_packages(),
     platforms=['linux', 'windows', 'macos'],
-    install_requires=[],  # 指定此包的依赖
-    zip_safe=False,  # 为了兼容性，一般填 False
+    install_requires=[],
+    zip_safe=False,
 )

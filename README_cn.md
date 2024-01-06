@@ -31,30 +31,52 @@
 ### 把信息不可见地嵌入到文本中
 
 ```python
-from text_blind_watermark import TextBlindWatermarkThin
+from text_blind_watermark import TextBlindWatermark2
 
-# 密码
 password = '20190808'
-# 要嵌入的信息
+text = '这句话中有盲水印，你能提取出来吗？'
 watermark = 'github.com/guofei9987'
-text_blind_wm = TextBlindWatermarkThin(password=password)
 
-wm = text_blind_wm.embed(watermark=watermark)
-# This is example，you can put wm everywhere
-text_embed = '这句话中有盲' + wm + '水印，你能提取出来吗？'
-print(text_embed)
+text_blind_wm = TextBlindWatermark2(password=password)
+
+text_with_wm = text_blind_wm.embed(text=text, watermark=watermark)
+print(text_with_wm)
 ```
 
 
 ### 从文本中提取不可见的信息
 
 ```python
-text_blind_wm_new = TextBlindWatermarkThin(password=password)
-wm_extract = text_blind_wm_new.extract(text_embed)
+text_blind_wm2 = TextBlindWatermark2(password=password)
+wm_extract = text_blind_wm2.extract(text_with_wm)
 print('提取内容：', wm_extract)
 ```
 
 >github.com/guofei9987
+
+### `chr_type`
+
+可以指定 `chr_type` 使其在不同的系统环境中有更好的表现
+
+```python
+from text_blind_watermark import TextBlindWatermark2
+
+password = '20190808'
+text = '这句话中有盲水印，你能提取出来吗？'
+watermark = 'github.com/guofei9987'
+
+text_blind_wm = TextBlindWatermark2(password=password, chr_type=(3, 4))
+
+text_with_wm = text_blind_wm.embed(text=text, watermark=watermark)
+print(text_with_wm)
+
+text_blind_wm2 = TextBlindWatermark2(password=password, chr_type=(3, 4))
+wm_extract = text_blind_wm2.extract(text_with_wm)
+print('提取内容：', wm_extract)
+assert watermark == wm_extract
+```
+
+
 
 ## 更稳定的版本
 ### 张三：把隐秘消息嵌入到另一段文本中
