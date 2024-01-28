@@ -62,8 +62,8 @@ class TextBlindWatermark:
 
 
 class TextBlindWatermark2:
-    def __init__(self, password, chr_type=(0, 1)):
-        all_chr_wm_hex = ('1d', '7F', '200B', '200C', '200D')
+    def __init__(self, password, chr_type=(4, 5)):
+        all_chr_wm_hex = ('1d', '7F', '200B', '200C', '200D', 'FEFF')
         chr_wm = [chr(int(all_chr_wm_hex[chr_idx], base=16)) for chr_idx in chr_type]
 
         self.bit2char_dict = {'0': chr_wm[0], '1': chr_wm[1]}
@@ -76,7 +76,8 @@ class TextBlindWatermark2:
         wm_bin = ''.join(wm_bin)
         return ''.join(self.bit2char_dict[i] for i in wm_bin)
 
-    def embed(self, text: str, watermark: str, idx: int = None):
+    def embed(self, text: str, watermark: str, idx: int = None) -> str:
+        text = self.remove_watermark(text)  # remove existing watermark before add new one
         wm = self.get_wm(watermark)
         if idx is None:
             idx = random.randint(0, len(text))
@@ -85,7 +86,7 @@ class TextBlindWatermark2:
 
         return text[:idx] + wm + text[idx:]
 
-    def extract(self, text_embed):
+    def extract(self, text_embed: str) -> str:
 
         idx_left, idx_right = None, None
 
@@ -109,3 +110,8 @@ class TextBlindWatermark2:
 
         return bytes([int(wm_extract_bin[8 * i:8 * i + 8], base=2) ^ random.randint(0, 255) for i in
                       range(len(wm_extract_bin) // 8)]).decode('utf-8')
+
+    def remove_watermark(self, text_embed: str) -> str:
+        return (text_embed
+                .replace(self.bit2char_dict["0"], "")
+                .replace(self.bit2char_dict["1"], ""))
