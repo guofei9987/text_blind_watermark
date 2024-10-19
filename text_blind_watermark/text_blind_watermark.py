@@ -10,7 +10,8 @@ class TextBlindWatermark:
 
     def read_wm(self, watermark):
         random.seed(self.password)
-        wm_bin = [format(i ^ random.randint(0, 255), '08b') for i in watermark.encode('utf-8')]  # 8位2进制格式
+        # wm_bin = [format(i ^ random.randint(0, 255), '08b') for i in watermark.encode('utf-8')]  # 8位2进制格式
+        wm_bin = [format(i, '08b') for i in watermark.encode('utf-8')]  # 8位2进制格式
         self.wm_bin = ''.join(wm_bin)
         return self
 
@@ -36,7 +37,7 @@ class TextBlindWatermark:
             sentence_embed += text[idx]
             if idx < len(wm_bin):
                 if wm_bin[idx] == "1":
-                    sentence_embed += chr(127)
+                    sentence_embed += chr(0x200C)
 
         return sentence_embed
 
@@ -45,7 +46,7 @@ class TextBlindWatermark:
 
         idx = 0
         while idx < len(text_embed):
-            if text_embed[idx] != chr(127):
+            if text_embed[idx] != chr(0x200C):
                 idx += 1
                 wm_extract_bin += '0'
             else:
@@ -57,7 +58,10 @@ class TextBlindWatermark:
         wm_extract_bin = wm_extract_bin[first_zero + 1:last_zero - 1]
 
         random.seed(self.password)
-        return bytes([int(wm_extract_bin[8 * i:8 * i + 8], base=2) ^ random.randint(0, 255) for i in
+        # return bytes([int(wm_extract_bin[8 * i:8 * i + 8], base=2) ^ random.randint(0, 255) for i in
+        #               range(len(wm_extract_bin) // 8)]).decode('utf-8')
+        #
+        return bytes([int(wm_extract_bin[8 * i:8 * i + 8], base=2) for i in
                       range(len(wm_extract_bin) // 8)]).decode('utf-8')
 
 
