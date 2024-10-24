@@ -33,10 +33,11 @@ print(all_sentence)
 检查项目：
 平台：mac、win、ios、安卓、Linux
 软件：（重要性按大小排序）
-- chrome
+- Chrome
 - 系统自带浏览器
 - 系统自带的文本编辑器
 - Office 套件
+- 常用 app，微信、钉钉 之类的
 - Mac 自带办公软件
 - wps等
 - 命令行
