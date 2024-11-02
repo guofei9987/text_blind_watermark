@@ -17,7 +17,7 @@ Put message(blind watermark) into a text. so that the message is invisible, and 
 - Online demo(from old version, for demo only): [https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html](https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html)
 - **中文 readme** [README_cn.md](README_cn.md)
 - **Source code:** [https://github.com/guofei9987/text_blind_watermark](https://github.com/guofei9987/text_blind_watermark)
-- **Rust Version:** [https://github.com/guofei9987/text-blind-watermark](https://github.com/guofei9987/text-blind-watermark)
+- **Rust Version:** [https://github.com/guofei9987/hidden_watermark](https://github.com/guofei9987/hidden_watermark)
 
 
 Can be used in 

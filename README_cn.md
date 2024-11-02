@@ -2,6 +2,26 @@
 
 文本隐水印，用来把一段信息嵌入到一段明文中，使信息隐密不可见，并且旁人无法察觉到嵌入后明文的变化。
 
+
+[![PyPI](https://img.shields.io/pypi/v/text_blind_watermark)](https://pypi.org/project/text_blind_watermark/)
+[![Build Status](https://app.travis-ci.com/guofei9987/text_blind_watermark.svg?branch=main)](https://app.travis-ci.com/guofei9987/text_blind_watermark)
+[![codecov](https://codecov.io/gh/guofei9987/text_blind_watermark/branch/main/graph/badge.svg?token=85EAN4IVM6)](https://codecov.io/gh/guofei9987/text_blind_watermark)
+[![License](https://img.shields.io/pypi/l/text_blind_watermark.svg)](https://github.com/guofei9987/text_blind_watermark/blob/master/LICENSE)
+![Python](https://img.shields.io/badge/python->=3.5-green.svg)
+![Platform](https://img.shields.io/badge/platform-windows%20|%20linux%20|%20macos-green.svg)
+[![stars](https://img.shields.io/github/stars/guofei9987/text_blind_watermark.svg?style=social)](https://github.com/guofei9987/text_blind_watermark/)
+[![fork](https://img.shields.io/github/forks/guofei9987/text_blind_watermark?style=social)](https://github.com/guofei9987/text_blind_watermark/fork)
+[![Downloads](https://pepy.tech/badge/text_blind_watermark)](https://pepy.tech/project/text_blind_watermark)
+
+
+- Video demo：[https://www.bilibili.com/video/BV1m3411s7kT](https://www.bilibili.com/video/BV1m3411s7kT)
+- Online demo(from old version, for demo only): [https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html](https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html)
+- **中文 readme** [README_cn.md](README_cn.md)
+- **源码:** [https://github.com/guofei9987/text_blind_watermark](https://github.com/guofei9987/text_blind_watermark)
+- **Rust 版本:** [https://github.com/guofei9987/hidden_watermark](https://github.com/guofei9987/hidden_watermark)
+
+
+
 经测试，在这些场景下信息隐藏比较完美
 - [x] MacBook 版本的 Chrome 浏览器，包括知乎网页版、微博网页版等。
 - [x] 微信、钉钉。Mac/Iphone 版均可
@@ -9,10 +29,6 @@
 - [x] 用 Chrome 打开 github.com 上的代码文件和文本文件（但md文件不行）
 - [x] 用复制/黏贴 (ctrl+c/v) 的方式在上述平台之间黏贴
 - [x] 欢迎补充
-
-不太行的
-- Safari 浏览器
-
 
 
 在线演示(旧版算法，仅用于展示效果): [https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html](https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html)
