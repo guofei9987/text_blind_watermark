@@ -1,2 +1,2 @@
 setuptools
-crypt-tool==0.1.3
+crypt_tool==0.1.3
