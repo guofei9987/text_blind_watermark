@@ -31,95 +31,51 @@ Can be used in
 install
 
 ```bash
->pip install text_blind_watermark
+pip install text_blind_watermark
 ```
 
 ### embed message into text:
 
 ```python
-from text_blind_watermark import TextBlindWatermark2
+from text_blind_watermark import TextBlindWatermark
 
-password = '20190808'
-text = '这句话中有盲水印，你能提取出来吗？'
-watermark = 'github.com/guofei9987'
+password = b"p@ssw0rd"
+watermark = b"This is watermark"
+original_text_file = 'files/file_txt.txt'
+file_with_watermark = 'files/file_txt_with_watermark.txt'
 
-text_blind_wm = TextBlindWatermark2(password=password)
+with open(original_text_file, 'r') as f:
+    text = f.read()
 
-text_with_wm = text_blind_wm.embed(text=text, watermark=watermark)
-print(text_with_wm)
+twm = TextBlindWatermark(pwd=password)
+
+# add watermark into the text
+text_with_wm = twm.add_wm_rnd(text=text, wm=watermark)
+
+# write into a new file
+with open(file_with_watermark, 'w') as f:
+    f.write(text_with_wm)
 ```
 
 
-### extract message from text
-
-```python
-text_blind_wm2 = TextBlindWatermark2(password=password)
-wm_extract = text_blind_wm2.extract(text_with_wm)
-print('提取内容：', wm_extract)
-```
-
->github.com/guofei9987
-
-
-
-### `chr_type`
-
-You can choose different type to get better performance.
-
-
-```python
-from text_blind_watermark import TextBlindWatermark2
-
-password = '20190808'
-text = '这句话中有盲水印，你能提取出来吗？'
-watermark = 'github.com/guofei9987'
-
-text_blind_wm = TextBlindWatermark2(password=password, chr_type=(3, 4))
-
-text_with_wm = text_blind_wm.embed(text=text, watermark=watermark)
-print(text_with_wm)
-
-text_blind_wm2 = TextBlindWatermark2(password=password, chr_type=(3, 4))
-wm_extract = text_blind_wm2.extract(text_with_wm)
-print('提取内容：', wm_extract)
-assert watermark == wm_extract
-```
-
-## Another algorithm is more robust
-
-### Alice Put her text watermark into a text:
+### read and extract watermark
 
 ```python
 from text_blind_watermark import TextBlindWatermark
 
-watermark = "绝密：两点老地方见！"
-text = "这句话中有盲水印，你能提取出来吗？" * 16
-password = "20190808"
+password = b"p@ssw0rd"
+file_with_watermark = 'files/file_txt_with_watermark.txt'
 
-twm = TextBlindWatermark(password=password)
-twm.read_wm(watermark=watermark)
-twm.read_text(text=text)
-text_embed = twm.embed()
+with open(file_with_watermark, 'r') as f:
+    text_with_wm_new = f.read()
 
-print("打上盲水印之后:")
-print(text_embed)
+twm = TextBlindWatermark(pwd=password)
+watermark_extract = twm.extract(text_with_wm_new)
+print(watermark_extract)
 ```
 
-Then, you can paste this text to where you need.
+>watermark extracted： This is a watermark
 
-
-
-### Bob Extract the invisible watermark
-
-```python
-from text_blind_watermark import TextBlindWatermark
-password = "20190808"
-
-twm_new = TextBlindWatermark(password=password)
-wm_extract = twm_new.extract(text_embed)
-print("解出的盲水印：")
-print(wm_extract)
-```
 
 ## Related Project
 

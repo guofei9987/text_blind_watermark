@@ -1,29 +1,31 @@
 from text_blind_watermark import TextBlindWatermark
 
-watermark = "绝密：两点老地方见！"
-password = '20190808'
-text = '''这句话将会被嵌入暗水印，嵌入后的文本会被 print 出来。
-print 出来的文本从外观上看不出里面有隐藏信息，可以复制到微信、钉钉等发送。
-接收方获取文本后，用 wm_extract 可以提取出暗水印中的内容。
-经过测试，此程序不仅仅可以在微信、钉钉使用，也可以在知乎等网站使用。
-B站介绍视频：https://www.bilibili.com/video/BV1m3411s7kT
-（相关项目）把盲水印打入图片中： https://github.com/guofei9987/blind_watermark
-欢迎对本项目提意见以及 Star： https://github.com/guofei9987/text_blind_watermark
-'''
+password = b"p@ssw0rd"
+watermark = b"This is a watermark"
+original_text_file = 'files/file_txt.txt'
+file_with_watermark = 'files/file_txt_with_watermark.txt'
 
-# %% 打入盲水印
-twm = TextBlindWatermark(password=password)
-twm.read_wm(watermark=watermark)
-twm.read_text(text=text)
-text_embed = twm.embed()
-print("打上盲水印之后:")
-print(text_embed)
+with open(original_text_file, 'r') as f:
+    text = f.read()
 
-# %% 解出盲水印
-twm_new = TextBlindWatermark(password=password)
-wm_extract = twm_new.extract(text_embed)
-print("解出的盲水印：")
-print(wm_extract)
+twm = TextBlindWatermark(pwd=password)
 
-# %%
-assert wm_extract == watermark
+# add watermark into the text
+text_with_wm = twm.add_wm_rnd(text=text, wm=watermark)
+
+# write into a new file
+with open(file_with_watermark, 'w') as f:
+    f.write(text_with_wm)
+
+# %% read and extract watermark
+
+with open(file_with_watermark, 'r') as f:
+    text_with_wm_new = f.read()
+
+twm = TextBlindWatermark(pwd=password)
+watermark_extract = twm.extract(text_with_wm_new)
+print(watermark_extract)
+
+# %% assert
+
+assert watermark == watermark_extract

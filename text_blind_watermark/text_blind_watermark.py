@@ -3,7 +3,7 @@
 import random
 
 
-class TextBlindWatermark:
+class TextBlindWatermarkDeprecated:
     def __init__(self, password):
         self.password = password
         self.text, self.wm_bin = None, None
@@ -65,57 +65,57 @@ class TextBlindWatermark:
                       range(len(wm_extract_bin) // 8)]).decode('utf-8')
 
 
-class TextBlindWatermark2:
-    def __init__(self, password, chr_type=(4, 5)):
-        all_chr_wm_hex = ('1d', '7F', '200B', '200C', '200D', 'FEFF')
-        chr_wm = [chr(int(all_chr_wm_hex[chr_idx], base=16)) for chr_idx in chr_type]
-
-        self.bit2char_dict = {'0': chr_wm[0], '1': chr_wm[1]}
-        self.char2bit_dict = {chr_wm[0]: '0', chr_wm[1]: '1'}
-        self.password = password
-
-    def get_wm(self, watermark: str):
-        random.seed(self.password)
-        wm_bin = [format(i ^ random.randint(0, 255), '08b') for i in watermark.encode('utf-8')]  # 8位2进制格式
-        wm_bin = ''.join(wm_bin)
-        return ''.join(self.bit2char_dict[i] for i in wm_bin)
-
-    def embed(self, text: str, watermark: str, idx: int = None) -> str:
-        text = self.remove_watermark(text)  # remove existing watermark before add new one
-        wm = self.get_wm(watermark)
-        if idx is None:
-            idx = random.randint(0, len(text))
-        else:
-            assert idx <= len(text)
-
-        return text[:idx] + wm + text[idx:]
-
-    def extract(self, text_embed: str) -> str:
-
-        idx_left, idx_right = None, None
-
-        for idx, char in enumerate(text_embed):
-            if char in self.char2bit_dict:
-                if idx_left is None:
-                    idx_left = idx
-            else:
-                if idx_left is not None and idx_right is None:
-                    idx_right = idx
-                    break
-        else:
-            idx_right = len(text_embed)
-
-        if idx_left is None or idx_right is None:
-            raise IOError("There is no watermark!")
-
-        wm_extract_bin = ''.join(self.char2bit_dict[i] for i in text_embed[idx_left:idx_right])
-
-        random.seed(self.password)
-
-        return bytes([int(wm_extract_bin[8 * i:8 * i + 8], base=2) ^ random.randint(0, 255) for i in
-                      range(len(wm_extract_bin) // 8)]).decode('utf-8')
-
-    def remove_watermark(self, text_embed: str) -> str:
-        return (text_embed
-                .replace(self.bit2char_dict["0"], "")
-                .replace(self.bit2char_dict["1"], ""))
+# class TextBlindWatermark2:
+#     def __init__(self, password, chr_type=(4, 5)):
+#         all_chr_wm_hex = ('1d', '7F', '200B', '200C', '200D', 'FEFF')
+#         chr_wm = [chr(int(all_chr_wm_hex[chr_idx], base=16)) for chr_idx in chr_type]
+#
+#         self.bit2char_dict = {'0': chr_wm[0], '1': chr_wm[1]}
+#         self.char2bit_dict = {chr_wm[0]: '0', chr_wm[1]: '1'}
+#         self.password = password
+#
+#     def get_wm(self, watermark: str):
+#         random.seed(self.password)
+#         wm_bin = [format(i ^ random.randint(0, 255), '08b') for i in watermark.encode('utf-8')]  # 8位2进制格式
+#         wm_bin = ''.join(wm_bin)
+#         return ''.join(self.bit2char_dict[i] for i in wm_bin)
+#
+#     def embed(self, text: str, watermark: str, idx: int = None) -> str:
+#         text = self.remove_watermark(text)  # remove existing watermark before add new one
+#         wm = self.get_wm(watermark)
+#         if idx is None:
+#             idx = random.randint(0, len(text))
+#         else:
+#             assert idx <= len(text)
+#
+#         return text[:idx] + wm + text[idx:]
+#
+#     def extract(self, text_embed: str) -> str:
+#
+#         idx_left, idx_right = None, None
+#
+#         for idx, char in enumerate(text_embed):
+#             if char in self.char2bit_dict:
+#                 if idx_left is None:
+#                     idx_left = idx
+#             else:
+#                 if idx_left is not None and idx_right is None:
+#                     idx_right = idx
+#                     break
+#         else:
+#             idx_right = len(text_embed)
+#
+#         if idx_left is None or idx_right is None:
+#             raise IOError("There is no watermark!")
+#
+#         wm_extract_bin = ''.join(self.char2bit_dict[i] for i in text_embed[idx_left:idx_right])
+#
+#         random.seed(self.password)
+#
+#         return bytes([int(wm_extract_bin[8 * i:8 * i + 8], base=2) ^ random.randint(0, 255) for i in
+#                       range(len(wm_extract_bin) // 8)]).decode('utf-8')
+#
+#     def remove_watermark(self, text_embed: str) -> str:
+#         return (text_embed
+#                 .replace(self.bit2char_dict["0"], "")
+#                 .replace(self.bit2char_dict["1"], ""))

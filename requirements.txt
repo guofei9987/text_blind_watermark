@@ -1,1 +1,2 @@
 setuptools
+crypt-tool==0.1.3

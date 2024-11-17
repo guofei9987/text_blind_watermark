@@ -1,3 +1,4 @@
-from .text_blind_watermark import TextBlindWatermark, TextBlindWatermark2
+from .text_blind_watermark import TextBlindWatermarkDeprecated
+from .text_blind_watermark2 import TextBlindWatermark
 
-__version__ = '0.3.2'
+__version__ = '0.4.1'

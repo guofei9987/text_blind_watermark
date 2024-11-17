@@ -47,87 +47,45 @@
 ### 把信息不可见地嵌入到文本中
 
 ```python
-from text_blind_watermark import TextBlindWatermark2
+from text_blind_watermark import TextBlindWatermark
 
-password = '20190808'
-text = '这句话中有盲水印，你能提取出来吗？'
-watermark = 'github.com/guofei9987'
+password = b"p@ssw0rd"
+watermark = b"This is watermark"
+original_text_file = 'files/file_txt.txt'
+file_with_watermark = 'files/file_txt_with_watermark.txt'
 
-text_blind_wm = TextBlindWatermark2(password=password)
+with open(original_text_file, 'r') as f:
+    text = f.read()
 
-text_with_wm = text_blind_wm.embed(text=text, watermark=watermark)
-print(text_with_wm)
+twm = TextBlindWatermark(pwd=password)
+
+# add watermark into the text
+text_with_wm = twm.add_wm_rnd(text=text, wm=watermark)
+
+# write into a new file
+with open(file_with_watermark, 'w') as f:
+    f.write(text_with_wm)
 ```
 
 
 ### 从文本中提取不可见的信息
 
 ```python
-text_blind_wm2 = TextBlindWatermark2(password=password)
-wm_extract = text_blind_wm2.extract(text_with_wm)
-print('提取内容：', wm_extract)
-```
-
->github.com/guofei9987
-
-### `chr_type`
-
-可以指定 `chr_type` 使其在不同的系统环境中有更好的表现
-
-```python
-from text_blind_watermark import TextBlindWatermark2
-
-password = '20190808'
-text = '这句话中有盲水印，你能提取出来吗？'
-watermark = 'github.com/guofei9987'
-
-text_blind_wm = TextBlindWatermark2(password=password, chr_type=(3, 4))
-
-text_with_wm = text_blind_wm.embed(text=text, watermark=watermark)
-print(text_with_wm)
-
-text_blind_wm2 = TextBlindWatermark2(password=password, chr_type=(3, 4))
-wm_extract = text_blind_wm2.extract(text_with_wm)
-print('提取内容：', wm_extract)
-assert watermark == wm_extract
-```
-
-
-
-## 更稳定的版本
-### 张三：把隐秘消息嵌入到另一段文本中
-
-```python
 from text_blind_watermark import TextBlindWatermark
 
-watermark = "绝密：两点老地方见！"
-text = "这句话中有盲水印，你能提取出来吗？" * 16
-password = "20190808"
+password = b"p@ssw0rd"
+file_with_watermark = 'files/file_txt_with_watermark.txt'
 
-twm = TextBlindWatermark(password=password)
-twm.read_wm(watermark=watermark)
-twm.read_text(text=text)
-text_embed = twm.embed()
+with open(file_with_watermark, 'r') as f:
+    text_with_wm_new = f.read()
 
-print("打上盲水印之后:")
-print(text_embed)
+twm = TextBlindWatermark(pwd=password)
+watermark_extract = twm.extract(text_with_wm_new)
+print(watermark_extract)
 ```
 
-显示的明文可以粘贴到任何地方
+>watermark extracted： This is a watermark
 
-*It uses AES to encrypt*
-
-### 李四：拿到明文，解出暗文
-
-```python
-from text_blind_watermark import TextBlindWatermark
-password = "20190808"
-
-twm_new = TextBlindWatermark(password=password)
-wm_extract = twm_new.extract(text_embed)
-print("解出的盲水印：")
-print(wm_extract)
-```
 
 ## 相关项目
 

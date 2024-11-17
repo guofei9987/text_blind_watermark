@@ -1,0 +1,6 @@
+This text will be embedded with watermark.
+Repo:https://github.com/guofei9987/text_blind_watermark
+Your star matters!
+这篇文档将被嵌入不可见的水印。
+项目地址：https://github.com/guofei9987/text_blind_watermark
+请给个 star！

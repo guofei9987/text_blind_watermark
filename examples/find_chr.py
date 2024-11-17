@@ -3,7 +3,8 @@ no = [
     , '0x202E'  # 会让字符方向颠倒
     , '0x202A', '0x202B', '0x202C', '0x202D'  # 这些 mac-ppt 不行
     , '0x00AD'  # 不行：win-excel，win-word
-    , '200C', '200D'  # 不行：mac-excel
+    , '200C', '200D'  # 不行：mac-excel。200c 的优点是在 pycharm 的python 输出也可以隐藏（但 console 不隐藏）
+    , '0x2062' '0x2063'  # 不行：mac 的 3 个 Office 文件均不可用
 ]
 
 chrs_may_useful = [
@@ -11,14 +12,17 @@ chrs_may_useful = [
     '200B'
     , 'FEFF'
     , '0x2060'
+    , '0x200E'
+    , '0x200F'
+
 ]
 
 sentences = []
 
-for i in no+chrs_may_useful:
+for i in chrs_may_useful:
     sentences.append(
         "这里插入"
-        + chr(int(i, base=16)) + chr(int(i, base=16)) + chr(int(i, base=16))
+        + chr(int(i, base=16))*10 + chr(int(i, base=16)) + chr(int(i, base=16))
         + "一段含零字符" + i
     )
 
@@ -27,7 +31,6 @@ with open("find_chr.txt", "w") as f:
     f.write(all_sentence)
 
 print(all_sentence)
-
 
 """
 检查项目：
