@@ -22,7 +22,7 @@ jobs:
         run: |
           pip install .
           python examples/example.py
-          python examples/example_wm2.py
+          python examples/example_old.py
       #        pytest --cov .
 #      - name: Upload coverage reports to Codecov with GitHub Action
 #        uses: codecov/codecov-action@v3
