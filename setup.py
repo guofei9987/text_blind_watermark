@@ -31,6 +31,6 @@ setup(
     license='MIT',
     packages=find_packages(),
     platforms=['linux', 'windows', 'macos'],
-    install_requires=[],
+    install_requires=["crypt_tool>=0.1.3"],
     zip_safe=False,
 )
