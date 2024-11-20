@@ -1,5 +1,4 @@
 import os
-import text_blind_watermark
 
 this_directory = os.path.abspath(os.path.dirname(__file__))
 
@@ -20,7 +19,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='text_blind_watermark',
-    version=text_blind_watermark.__version__,
+    version="0.4.2",
     python_requires='>=3.5',
     description='Text Blind Watermark in Python',
     long_description=read_file('README.md'),

@@ -1,4 +1,7 @@
 from text_blind_watermark import TextBlindWatermark
+import os
+
+os.chdir(os.path.dirname(__file__))
 
 password = b"p@ssw0rd"
 watermark = b"This is a watermark"
