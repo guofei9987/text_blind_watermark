@@ -15,15 +15,17 @@
 
 
 - Video demo：[https://www.bilibili.com/video/BV1m3411s7kT](https://www.bilibili.com/video/BV1m3411s7kT)
-- Online demo(from old version, for demo only): [https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html](https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html)
+- **在线应用**： [https://www.guofei.site/a/app/hidden_watermark/text_hidden_watermark.html](https://www.guofei.site/a/app/hidden_watermark/text_hidden_watermark.html)
+- **Rust 版本:** [https://github.com/guofei9987/hidden_watermark](https://github.com/guofei9987/hidden_watermark)
 - **中文 readme** [README_cn.md](README_cn.md)
 - **源码:** [https://github.com/guofei9987/text_blind_watermark](https://github.com/guofei9987/text_blind_watermark)
-- **Rust 版本:** [https://github.com/guofei9987/hidden_watermark](https://github.com/guofei9987/hidden_watermark)
+- 在线应用（旧版，将移除）: [https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html](https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html)
 
 
 
 经测试，在这些场景下信息隐藏比较完美
 - [x] MacBook 版本的 Chrome 浏览器，包括知乎网页版、微博网页版等。
+- [x] Mac/Windows 系统自带的文本编辑器
 - [x] 微信、钉钉。Mac/Iphone 版均可
 - [x] 苹果备忘录
 - [x] 用 Chrome 打开 github.com 上的代码文件和文本文件（但md文件不行）

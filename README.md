@@ -14,10 +14,11 @@ Put message(blind watermark) into a text. so that the message is invisible, and 
 
 
 - Video demo：[https://www.bilibili.com/video/BV1m3411s7kT](https://www.bilibili.com/video/BV1m3411s7kT)
-- Online demo(from old version, for demo only): [https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html](https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html)
+- **Online app**：[https://www.guofei.site/a/app/hidden_watermark/text_hidden_watermark.html](https://www.guofei.site/a/app/hidden_watermark/text_hidden_watermark.html)
+- **Rust Version:** [https://github.com/guofei9987/hidden_watermark](https://github.com/guofei9987/hidden_watermark)
 - **中文 readme** [README_cn.md](README_cn.md)
 - **Source code:** [https://github.com/guofei9987/text_blind_watermark](https://github.com/guofei9987/text_blind_watermark)
-- **Rust Version:** [https://github.com/guofei9987/hidden_watermark](https://github.com/guofei9987/hidden_watermark)
+- Online demo(old version, will be removed): [https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html](https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html)
 
 
 Can be used in 
