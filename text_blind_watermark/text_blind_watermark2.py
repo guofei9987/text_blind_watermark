@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+"""
+Author: Guo Fei
+Email: me@guofei.site
+GitHub: https://github.com/guofei9987/text_blind_watermark
+"""
 
 from crypt_tool import CryptConverter, system_random
 
