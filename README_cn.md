@@ -14,12 +14,11 @@
 [![Downloads](https://pepy.tech/badge/text_blind_watermark)](https://pepy.tech/project/text_blind_watermark)
 
 
+- **在线试用**： [https://www.guofei.site/os/text_wm.html](https://www.guofei.site/os/text_wm.html)
 - Video demo：[https://www.bilibili.com/video/BV1m3411s7kT](https://www.bilibili.com/video/BV1m3411s7kT)
-- **在线应用**： [https://www.guofei.site/a/app/hidden_watermark/text_hidden_watermark.html](https://www.guofei.site/a/app/hidden_watermark/text_hidden_watermark.html)
 - **Rust 版本:** [https://github.com/guofei9987/hidden_watermark](https://github.com/guofei9987/hidden_watermark)
 - **中文 readme** [README_cn.md](README_cn.md)
 - **源码:** [https://github.com/guofei9987/text_blind_watermark](https://github.com/guofei9987/text_blind_watermark)
-- 在线应用（旧版，将移除）: [https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html](https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html)
 
 
 
@@ -32,10 +31,16 @@
 - [x] 用复制/黏贴 (ctrl+c/v) 的方式在上述平台之间黏贴
 - [x] 欢迎补充
 
+以下平台测试通过：
+- Chrome（Mac，包括知乎、微博等的网页版）
+- 系统文本编辑器（Mac/Windows）
+- 微信、钉钉（Mac/iPhone）
+- 苹果备忘录
+- GitHub 上的文本/代码文件（.md 文件除外）
+- 支持 Ctrl+C/V 复制粘贴跨平台传输
 
-在线演示(旧版算法，仅用于展示效果): [https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html](https://www.guofei.site/pictures_for_blog/app/text_watermark/v1.html)
 
-视频展示：[https://www.bilibili.com/video/BV1m3411s7kT](https://www.bilibili.com/video/BV1m3411s7kT)
+
 
 ## 如何使用
 
@@ -61,10 +66,10 @@ with open(original_text_file, 'r') as f:
 
 twm = TextBlindWatermark(pwd=password)
 
-# add watermark into the text
+# 添加水印到文本中
 text_with_wm = twm.add_wm_rnd(text=text, wm=watermark)
 
-# write into a new file
+# 保存到新文件
 with open(file_with_watermark, 'w') as f:
     f.write(text_with_wm)
 ```
@@ -86,7 +91,7 @@ watermark_extract = twm.extract(text_with_wm_new)
 print(watermark_extract)
 ```
 
->watermark extracted： This is a watermark
+>This is a watermark
 
 
 ## 相关项目
