@@ -11,7 +11,7 @@ Embed an invisible message (blind watermark) into text, without altering its rea
 [![stars](https://img.shields.io/github/stars/guofei9987/text_blind_watermark.svg?style=social)](https://github.com/guofei9987/text_blind_watermark/)
 [![fork](https://img.shields.io/github/forks/guofei9987/text_blind_watermark?style=social)](https://github.com/guofei9987/text_blind_watermark/fork)
 [![Downloads](https://pepy.tech/badge/text_blind_watermark)](https://pepy.tech/project/text_blind_watermark)
-
+<a href="https://hellogithub.com/repository/guofei9987/text_blind_watermark" target="_blank"><img src="https://abroad.hellogithub.com/v1/widgets/recommend.svg?rid=e746d0a33c5f471aac65642e173e3dd0&claim_uid=se0WHo8cbiLv2w1&theme=small" alt="Featured｜HelloGitHub" /></a>
 
 - **Try it online**：[https://www.guofei.site/os/text_wm.html](https://www.guofei.site/os/text_wm.html)
 - Video demo：[https://www.bilibili.com/video/BV1m3411s7kT](https://www.bilibili.com/video/BV1m3411s7kT)
